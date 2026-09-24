@@ -1034,3 +1034,9 @@ div[data-testid="stExpanderDetails"] div[data-testid="stLinkButton"] a {
     background-color: var(--input-background) !important;
     color: var(--main-text) !important;
 }
+
+.st-key-other_you_button button {
+    min-height: 4rem !important;
+    font-size: 1.15rem !important;
+    font-weight: 700 !important;
+}
