@@ -1,0 +1,8 @@
+streamlit
+streamlit-searchbox
+catboost
+joblib
+pandas
+numpy
+requests
+python-dotenv

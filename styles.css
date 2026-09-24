@@ -1,0 +1,1036 @@
+/* ================================================================
+   COLOURS
+   ================================================================ */
+
+.stApp {
+    --page-background: #F9EDE8;
+    --control-accent: #BF8759;
+    --control-text: #261B1A;
+    --input-background: #FFF9F6;
+    --input-border: #BF8759;
+    --main-text: #382B2B;
+    --button-background: #BF8759;
+    --button-text: #261B1A;
+    --button-border: #BF8759;
+    --row-background: #F0DCD4;
+    --row-hover-background: #F4E5DE;
+    --row-border: #BF8759;
+    --row-hover-border: #BF8759;
+    --row-shadow: 0 6px 18px rgba(56, 43, 43, 0.09);
+    --track-number: #BF8759;
+    --track-title: #382B2B;
+    --track-title-hover: #BF8759;
+    --track-artist: #382B2B;
+    --track-stats: #382B2B;
+    --genre-card-background: #F0DCD4;
+    --genre-card-border: #BF8759;
+    --genre-card-shadow: 0 8px 24px rgba(56, 43, 43, 0.10);
+    --genre-rank-background: #F0DCD4;
+    --genre-rank-text: #BF8759;
+    --genre-name: #382B2B;
+    --genre-probability: #BF8759;
+    --genre-description: #382B2B;
+    --personality-background: rgba(240, 220, 212, 0.72);
+    --personality-border: #BF8759;
+    --personality-text: #382B2B;
+    --artist-badge-background: linear-gradient(145deg, #F0DCD4, #F0DCD4);
+    --artist-badge-text: #BF8759;
+    --artist-tag-background: #F0DCD4;
+    --artist-tag-border: #BF8759;
+    --artist-card-glow: rgba(191, 135, 89, 0.15);
+    background: var(--page-background);
+    color: var(--main-text);
+    accent-color: var(--control-accent);
+    --primary-color: var(--control-accent);
+}
+
+.stApp:has(.evil-theme) {
+    --page-background: #241D1D;
+    --control-accent: #DDA66D;
+    --control-text: #261B1A;
+    --input-background: #392D2D;
+    --input-border: #DDA66D;
+    --main-text: #F9EDE8;
+    --button-background: #DDA66D;
+    --button-text: #261B1A;
+    --button-border: #DDA66D;
+    --row-background: rgba(57, 45, 45, 0.96);
+    --row-hover-background: #403232;
+    --row-border: #DDA66D;
+    --row-hover-border: #DDA66D;
+    --row-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+    --track-number: #DDA66D;
+    --track-title: #F9EDE8;
+    --track-title-hover: #DDA66D;
+    --track-artist: #F9EDE8;
+    --track-stats: #F9EDE8;
+    --genre-card-background: rgba(57, 45, 45, 0.96);
+    --genre-card-border: #DDA66D;
+    --genre-card-shadow: 0 10px 28px rgba(0, 0, 0, 0.32);
+    --genre-rank-background: #DDA66D;
+    --genre-rank-text: #261B1A;
+    --genre-name: #F9EDE8;
+    --genre-probability: #DDA66D;
+    --genre-description: #F9EDE8;
+    --personality-background: rgba(221, 166, 109, 0.22);
+    --personality-border: #DDA66D;
+    --personality-text: #F9EDE8;
+    --artist-badge-background: linear-gradient(145deg, #DDA66D, #392D2D);
+    --artist-badge-text: #261B1A;
+    --artist-tag-background: rgba(221, 166, 109, 0.28);
+    --artist-tag-border: #DDA66D;
+    --artist-card-glow: rgba(221, 166, 109, 0.2);
+}
+
+.theme-marker {
+    display: none;
+}
+
+/* ================================================================
+   WELCOME PAGE
+   ================================================================ */
+
+.welcome-page {
+    display: flex;
+    min-height: 55vh;
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 5rem 1.5rem 1.5rem;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.welcome-symbols {
+    margin-bottom: 1.25rem;
+    font-size: 2.4rem;
+}
+
+.welcome-symbols span {
+    padding: 0 0.6rem;
+    color: #BF8759;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.08rem;
+    text-transform: uppercase;
+}
+
+.welcome-page h1 {
+    margin-bottom: 1rem;
+    font-size: clamp(2.6rem, 6vw, 5.2rem);
+    line-height: 1.05;
+    letter-spacing: -0.16rem;
+}
+
+.welcome-page p {
+    max-width: 670px;
+    margin: 0;
+    color: #382B2B;
+    font-size: 1.12rem;
+    line-height: 1.7;
+}
+
+.stApp:has(.welcome-page) .stButton > button {
+    min-height: 3rem;
+    font-weight: 700;
+    box-shadow: 0 8px 20px rgba(191, 135, 89, 0.24);
+}
+
+/* ================================================================
+   FORM CONTROLS — ROSEWATER + BRONZE
+   ================================================================ */
+
+/* Use the same bronze for sliders and selected controls. */
+div[data-testid="stSlider"] {
+    accent-color: var(--control-accent);
+}
+
+div[data-testid="stSlider"] [role="slider"] {
+    background-color: var(--button-background) !important;
+    border-color: var(--button-background) !important;
+}
+
+/* Streamlit draws the filled and unfilled track as a position-aware gradient.
+   Leave that background intact so its pale right side follows the handle. */
+
+/* Slider value above the handle. */
+div[data-testid="stSlider"] [data-testid="stThumbValue"],
+div[data-testid="stSlider"] [data-testid="stThumbValue"] *,
+div[data-testid="stSlider"] div[data-baseweb="slider"] [role="slider"] + div,
+div[data-testid="stSlider"] div[data-baseweb="slider"] [role="slider"] + div * {
+    color: var(--control-accent) !important;
+    -webkit-text-fill-color: var(--control-accent) !important;
+}
+
+/* Colour only the selected radio circle, never its label. */
+div[data-testid="stRadio"] [role="radio"][aria-checked="true"] {
+    background-color: var(--control-accent) !important;
+    border-color: var(--control-accent) !important;
+}
+
+div[data-testid="stRadio"] [role="radio"] + div,
+div[data-testid="stRadio"] [role="radio"] + div * {
+    background: transparent !important;
+}
+
+/* Keep Streamlit fields in the page palette. */
+.stApp div[data-baseweb="select"] > div,
+.stApp div[data-baseweb="input"] > div,
+.stApp div[data-baseweb="base-input"],
+.stApp div[data-baseweb="textarea"],
+.stApp div[data-testid="stTextInput"] > div > div,
+.stApp div[data-testid="stNumberInput"] > div > div {
+    background-color: var(--input-background) !important;
+    border-color: var(--input-border) !important;
+}
+
+.stApp div[data-baseweb="select"] input,
+.stApp div[data-baseweb="input"] input,
+.stApp div[data-baseweb="textarea"] textarea {
+    background-color: transparent !important;
+    color: var(--main-text) !important;
+    -webkit-text-fill-color: var(--main-text) !important;
+}
+
+.stApp div[data-baseweb="select"] > div:hover,
+.stApp div[data-baseweb="input"] > div:hover,
+.stApp div[data-baseweb="textarea"]:hover {
+    border-color: var(--control-accent) !important;
+}
+
+.stApp:has(.evil-theme) div[data-baseweb="select"] > div,
+.stApp:has(.evil-theme) div[data-baseweb="input"] > div,
+.stApp:has(.evil-theme) div[data-baseweb="base-input"],
+.stApp:has(.evil-theme) div[data-baseweb="textarea"] {
+    background-color: var(--input-background) !important;
+    border-color: var(--input-border) !important;
+}
+
+.stApp:has(.evil-theme) div[data-baseweb="select"] input,
+.stApp:has(.evil-theme) div[data-baseweb="input"] input,
+.stApp:has(.evil-theme) div[data-baseweb="textarea"] textarea {
+    color: var(--main-text) !important;
+    -webkit-text-fill-color: var(--main-text) !important;
+}
+
+.stApp h1,
+.stApp h2,
+.stApp h3,
+.stApp p,
+.stApp label,
+.stApp li {
+    color: var(--main-text);
+}
+
+/* Space the actual section headings. Streamlit's wrapper changes between
+   releases, so style the h2/h3 directly instead of relying on its test ID. */
+.stApp h2,
+.stApp h3 {
+    padding-top: 4rem !important;
+}
+
+.stButton > button {
+    padding: 0.55rem 1rem;
+    background: var(--button-background);
+    color: var(--button-text);
+    border: 1px solid var(--button-border);
+    border-radius: 10px;
+}
+
+/* Streamlit can place button labels inside nested elements, so apply the
+   colour to the button and all its children. */
+div[data-testid="stButton"] button,
+div[data-testid="stButton"] button * {
+    color: var(--button-text) !important;
+    -webkit-text-fill-color: var(--button-text) !important;
+}
+
+div[data-testid="stButton"] button {
+    background-color: var(--button-background) !important;
+    border-color: var(--button-border) !important;
+}
+
+div[data-testid="stButton"] button:hover,
+div[data-testid="stButton"] button:hover *,
+div[data-testid="stButton"] button:focus,
+div[data-testid="stButton"] button:focus *,
+div[data-testid="stButton"] button:active,
+div[data-testid="stButton"] button:active * {
+    color: var(--button-text) !important;
+    -webkit-text-fill-color: var(--button-text) !important;
+}
+
+/* ================================================================
+   PLAYLIST TRACK CARDS
+   ================================================================ */
+
+/* Playlist cards now use Streamlit expanders so each song can contain a
+   working Python-powered preview button. */
+div[data-testid="stExpander"] {
+    overflow: hidden;
+    margin-bottom: 0.65rem;
+    background: var(--row-background);
+    border: 1px solid var(--row-border) !important;
+    border-radius: 16px !important;
+    box-shadow: var(--row-shadow);
+    transition: transform 0.18s ease, border-color 0.18s ease;
+}
+
+div[data-testid="stExpander"]:hover {
+    transform: translateY(-2px);
+    border-color: var(--row-hover-border) !important;
+    background: var(--row-hover-background) !important;
+}
+
+div[data-testid="stExpander"]:hover summary,
+.stApp:has(.evil-theme) div[data-testid="stExpander"]:hover summary,
+.stApp:has(.evil-theme) div[data-testid="stExpander"]:hover summary[aria-expanded] {
+    background: var(--row-hover-background) !important;
+}
+
+div[data-testid="stExpander"] summary {
+    min-height: 82px;
+    padding: 0.7rem 1rem;
+    color: var(--track-title) !important;
+    font-weight: 700;
+}
+
+div[data-testid="stExpander"] summary * {
+    color: var(--track-title) !important;
+}
+
+div[data-testid="stExpanderDetails"] {
+    padding: 0 1rem 1rem;
+    border-top: 1px solid var(--row-border);
+    color: var(--track-stats);
+}
+
+div[data-testid="stExpanderDetails"] div[data-testid="stCaptionContainer"] p {
+    color: var(--track-number) !important;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.06rem;
+}
+
+div[data-testid="stExpanderDetails"] div[data-testid="stButton"] button,
+div[data-testid="stExpanderDetails"] div[data-testid="stLinkButton"] a {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    height: 3rem !important;
+    min-height: 3rem !important;
+    margin-top: 0.35rem !important;
+    padding: 0.65rem 1rem !important;
+    border-radius: 9px;
+    line-height: 1.2 !important;
+}
+
+/* Keep playlist controls dark on the evil-twin page. Streamlit otherwise
+   gives secondary buttons and an opened expander a white background. */
+.stApp:has(.evil-theme) div[data-testid="stExpander"] summary,
+.stApp:has(.evil-theme) div[data-testid="stExpander"] summary[aria-expanded="false"] {
+    background: #392D2D !important;
+}
+
+.stApp:has(.evil-theme) div[data-testid="stExpander"] summary[aria-expanded="true"] {
+    background: #392D2D !important;
+}
+
+.stApp:has(.evil-theme) div[data-testid="stExpanderDetails"],
+.stApp:has(.evil-theme) div[data-testid="stExpanderDetails"] > div {
+    background: #392D2D !important;
+}
+
+.stApp:has(.evil-theme) div[data-testid="stExpanderDetails"] div[data-testid="stButton"] button,
+.stApp:has(.evil-theme) div[data-testid="stExpanderDetails"] div[data-testid="stLinkButton"] a {
+    background: #392D2D !important;
+    border: 1px solid #DDA66D !important;
+    color: #F9EDE8 !important;
+    -webkit-text-fill-color: #F9EDE8 !important;
+}
+
+/* Keep Preview and Last.fm labels pale on the espresso controls. */
+.stApp:has(.evil-theme) div[data-testid="stExpanderDetails"] div[data-testid="stButton"] button *,
+.stApp:has(.evil-theme) div[data-testid="stExpanderDetails"] div[data-testid="stLinkButton"] a * {
+    color: #F9EDE8 !important;
+    -webkit-text-fill-color: #F9EDE8 !important;
+}
+
+.stApp:has(.evil-theme) div[data-testid="stExpanderDetails"] div[data-testid="stButton"] button:hover,
+.stApp:has(.evil-theme) div[data-testid="stExpanderDetails"] div[data-testid="stLinkButton"] a:hover {
+    background: #392D2D !important;
+    border-color: #DDA66D !important;
+}
+
+.playlist-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.65rem;
+    margin: 0.75rem 0 1.5rem 0;
+}
+
+.playlist-row {
+    overflow: hidden;
+    background: var(--row-background);
+    border: 1px solid var(--row-border);
+    border-radius: 14px;
+    box-shadow: var(--row-shadow);
+    transition: transform 0.18s ease, border-color 0.18s ease;
+}
+
+.track-summary {
+    display: grid;
+    grid-template-columns: 2.25rem minmax(0, 1fr) 1.5rem;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.8rem 1rem;
+    cursor: pointer;
+    list-style: none;
+}
+
+.track-summary::-webkit-details-marker {
+    display: none;
+}
+
+.playlist-row:hover {
+    transform: translateY(-2px);
+    border-color: var(--row-hover-border);
+}
+
+.playlist-row[open] {
+    border-color: var(--row-hover-border);
+}
+
+.track-number {
+    color: var(--track-number);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.08rem;
+}
+
+.track-details {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.track-title {
+    overflow: hidden;
+    color: var(--track-title);
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.track-artist {
+    overflow: hidden;
+    margin-top: 0.18rem;
+    color: var(--track-artist);
+    font-size: 0.9rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.track-chevron {
+    color: var(--track-number);
+    font-size: 1.15rem;
+    text-align: center;
+    transition: transform 0.18s ease;
+}
+
+.playlist-row[open] .track-chevron {
+    transform: rotate(180deg);
+}
+
+.track-info {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0 1rem 0.9rem 4rem;
+    border-top: 1px solid var(--row-border);
+    color: var(--track-stats);
+}
+
+.track-stats {
+    display: flex;
+    gap: 1.5rem;
+    color: var(--track-stats);
+    font-size: 0.82rem;
+    white-space: nowrap;
+}
+
+.track-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    padding-top: 0.75rem;
+}
+
+.stat-label {
+    color: var(--track-number);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.04rem;
+    text-transform: uppercase;
+}
+
+.lastfm-link {
+    color: var(--track-title-hover);
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.lastfm-link:hover {
+    text-decoration: underline;
+}
+
+.genre-pill {
+    display: inline-block;
+    padding: 0.3rem 0.7rem;
+    background: var(--button-background);
+    border: 1px solid var(--button-border);
+    border-radius: 999px;
+    color: var(--button-text);
+    font-size: 0.78rem;
+    font-weight: 700;
+}
+
+.genre-card {
+    height: 220px;
+    box-sizing: border-box;
+    padding: 1.25rem;
+    background: var(--genre-card-background);
+    border: 1px solid var(--genre-card-border);
+    border-radius: 16px;
+    box-shadow: var(--genre-card-shadow);
+}
+
+.genre-rank {
+    display: inline-block;
+    margin-bottom: 0.75rem;
+    padding: 0.2rem 0.55rem;
+    background: var(--genre-rank-background);
+    color: var(--genre-rank-text);
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.genre-name {
+    margin-bottom: 0.2rem;
+    color: var(--genre-name);
+    font-size: 1.35rem;
+    font-weight: 700;
+}
+
+.genre-probability {
+    margin-bottom: 0.8rem;
+    color: var(--genre-probability);
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.genre-description {
+    color: var(--genre-description);
+    font-size: 0.95rem;
+    line-height: 1.45;
+}
+
+.personality-card {
+    margin: 0.75rem 0 1.25rem 0;
+    padding: 1.15rem 1.25rem;
+    background: var(--personality-background);
+    border-left: 4px solid var(--personality-border);
+    border-radius: 12px;
+    color: var(--personality-text);
+    line-height: 1.55;
+}
+
+/* ================================================================
+   ARTIST INFORMATION CARDS
+   ================================================================ */
+
+.artist-card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.9rem;
+    margin: 1rem 0 1.5rem;
+}
+
+.artist-card {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(
+        145deg,
+        var(--row-background),
+        var(--genre-card-background)
+    );
+    border: 1px solid var(--row-border);
+    border-radius: 18px;
+    box-shadow: var(--row-shadow);
+    transition:
+        transform 0.18s ease,
+        border-color 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
+.artist-card::before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(
+        90deg,
+        var(--personality-border),
+        var(--track-title-hover),
+        transparent
+    );
+    content: "";
+}
+
+.artist-card::after {
+    position: absolute;
+    top: -4rem;
+    right: -4rem;
+    width: 9rem;
+    height: 9rem;
+    background: radial-gradient(
+        circle,
+        var(--artist-card-glow) 0%,
+        transparent 70%
+    );
+    border-radius: 50%;
+    content: "";
+    pointer-events: none;
+}
+
+.artist-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--row-hover-border);
+    box-shadow: var(--genre-card-shadow);
+}
+
+.artist-card[open] {
+    border-color: var(--row-hover-border);
+}
+
+.artist-card-summary {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 2.8rem minmax(0, 1fr) 1.5rem;
+    align-items: center;
+    gap: 0.85rem;
+    min-height: 76px;
+    padding: 0.85rem 1rem;
+    cursor: pointer;
+    list-style: none;
+}
+
+.artist-card-summary::-webkit-details-marker {
+    display: none;
+}
+
+.artist-avatar {
+    display: grid;
+    width: 2.65rem;
+    height: 2.65rem;
+    place-items: center;
+    background: var(--artist-badge-background);
+    border: 1px solid var(--row-border);
+    border-radius: 50%;
+    color: var(--artist-badge-text);
+    font-size: 1rem;
+    font-weight: 800;
+}
+
+.artist-card-heading {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+}
+
+.artist-card-kicker {
+    margin-bottom: 0.12rem;
+    color: var(--track-number);
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.08rem;
+    text-transform: uppercase;
+}
+
+.artist-card-name {
+    overflow: hidden;
+    color: var(--track-title);
+    font-size: 1.05rem;
+    font-weight: 750;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.artist-card-chevron {
+    color: var(--track-number);
+    font-size: 1rem;
+    transition: transform 0.18s ease;
+}
+
+.artist-card[open] .artist-card-chevron {
+    transform: rotate(180deg);
+}
+
+.artist-card-content {
+    position: relative;
+    z-index: 1;
+    padding: 1rem;
+    border-top: 1px solid var(--row-border);
+}
+
+.artist-statistics {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.65rem;
+    margin-bottom: 1rem;
+}
+
+.artist-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    padding: 0.7rem 0.8rem;
+    background: var(--personality-background);
+    border: 1px solid var(--row-border);
+    border-radius: 11px;
+}
+
+.artist-stat span {
+    color: var(--track-stats);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06rem;
+    text-transform: uppercase;
+}
+
+.artist-stat strong {
+    color: var(--track-title);
+}
+
+.artist-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 0.85rem;
+}
+
+.artist-tag {
+    padding: 0.28rem 0.55rem;
+    background: var(--artist-tag-background);
+    border: 1px solid var(--artist-tag-border);
+    border-radius: 999px;
+    color: var(--track-artist);
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.artist-biography {
+    margin-bottom: 1rem;
+    color: var(--track-artist) !important;
+    font-size: 0.85rem;
+    line-height: 1.55;
+}
+
+.artist-link {
+    display: inline-block;
+    padding: 0.5rem 0.75rem;
+    background: var(--button-background);
+    border: 1px solid var(--button-border);
+    border-radius: 9px;
+    color: #F9EDE8 !important;
+    -webkit-text-fill-color: #F9EDE8 !important;
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.artist-link:hover {
+    filter: brightness(1.08);
+}
+
+@media (max-width: 1050px) {
+    .artist-card-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 700px) {
+    .playlist-list,
+    .artist-card-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .track-info {
+        align-items: flex-start;
+        flex-direction: column;
+        padding-left: 4rem;
+    }
+}
+
+/* ================================================================
+   FINAL LIGHT-VERSUS-DARK COMPARISON
+
+   This section is also loaded inside the comparison component, which has
+   its own isolated document.
+   ================================================================ */
+
+.comparison-body {
+    margin: 0;
+    background: #F9EDE8;
+    color: #382B2B;
+    font-family: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.comparison-root {
+    overflow: hidden;
+    border: 1px solid #BF8759;
+    border-radius: 22px;
+    box-shadow: 0 18px 45px rgba(56, 43, 43, 0.15);
+}
+
+.comparison-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.comparison-panel {
+    min-height: 755px;
+    padding: 2rem;
+}
+
+.normal-panel {
+    background: #F9EDE8;
+    color: #382B2B;
+}
+
+.evil-panel {
+    background: #241D1D;
+    color: #F9EDE8;
+}
+
+.comparison-panel-heading {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+}
+
+.comparison-panel-heading > span {
+    font-size: 2rem;
+}
+
+.comparison-panel-heading p,
+.combined-choice p {
+    margin: 0 0 0.15rem;
+    color: #BF8759;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.09rem;
+    text-transform: uppercase;
+}
+
+.evil-panel .comparison-panel-heading p {
+    color: #DDA66D;
+}
+
+.comparison-panel-heading h2,
+.combined-choice h3 {
+    margin: 0;
+}
+
+.comparison-caption {
+    margin: 1rem 0 1.25rem;
+    color: #382B2B;
+    font-size: 0.9rem;
+}
+
+.evil-panel .comparison-caption {
+    color: #F9EDE8;
+}
+
+.comparison-tracks {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+}
+
+.comparison-track {
+    display: grid;
+    grid-template-columns: 2rem minmax(0, 1fr);
+    align-items: center;
+    gap: 0.65rem;
+    min-height: 44px;
+    padding: 0.48rem 0.7rem;
+    background: rgba(249, 237, 232, 0.78);
+    border: 1px solid #BF8759;
+    border-radius: 10px;
+}
+
+.evil-panel .comparison-track {
+    background: rgba(57, 45, 45, 0.96);
+    border-color: #DDA66D;
+}
+
+.comparison-number {
+    color: #BF8759;
+    font-size: 0.7rem;
+    font-weight: 800;
+}
+
+.evil-panel .comparison-number {
+    color: #DDA66D;
+}
+
+.comparison-track-details {
+    display: flex;
+    overflow: hidden;
+    flex-direction: column;
+}
+
+.comparison-track-details strong,
+.comparison-track-details small {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.comparison-track-details strong {
+    font-size: 0.88rem;
+}
+
+.comparison-track-details small {
+    margin-top: 0.08rem;
+    color: #382B2B;
+    font-size: 0.74rem;
+}
+
+.evil-panel .comparison-track-details small {
+    color: #F9EDE8;
+}
+
+.copy-button {
+    width: 100%;
+    margin-top: 1.25rem;
+    padding: 0.78rem 1rem;
+    border-radius: 10px;
+    font-size: 0.88rem;
+    font-weight: 750;
+    cursor: pointer;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.copy-button:hover {
+    transform: translateY(-1px);
+}
+
+.normal-copy {
+    background: #BF8759;
+    color: #261B1A;
+    border: 1px solid #BF8759;
+}
+
+.evil-copy {
+    background: #DDA66D;
+    color: #261B1A;
+    border: 1px solid #DDA66D;
+}
+
+.combined-choice {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding: 1.35rem 2rem;
+    background: linear-gradient(90deg, #F9EDE8 0%, #F0DCD4 50%, #241D1D 100%);
+}
+
+.combined-choice span {
+    display: block;
+    margin-top: 0.3rem;
+    color: #382B2B;
+    font-size: 0.82rem;
+}
+
+.combined-copy {
+    width: auto;
+    min-width: 210px;
+    margin: 0;
+    background: #BF8759;
+    color: #261B1A;
+    border: 1px solid #DDA66D;
+}
+
+.copy-button.copied {
+    background: #BF8759;
+    border-color: #BF8759;
+    color: #261B1A;
+}
+
+/* The comparison component is rendered in an isolated document, so its
+   custom buttons need their own readable-label rule. */
+.copy-button,
+.copy-button *,
+.copy-button:hover,
+.copy-button:focus,
+.copy-button:active {
+    color: #261B1A !important;
+    -webkit-text-fill-color: #261B1A !important;
+}
+
+@media (max-width: 760px) {
+    .comparison-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .comparison-panel {
+        min-height: auto;
+        padding: 1.25rem;
+    }
+
+    .combined-choice {
+        align-items: stretch;
+        flex-direction: column;
+        background: #F0DCD4;
+    }
+
+    .combined-copy {
+        width: 100%;
+    }
+}
+
+/* Shared palette for Streamlit widgets that otherwise inherit its red default. */
+.stApp [data-testid="stSlider"] [role="slider"],
+.stApp [data-testid="stRadio"] [role="radio"][aria-checked="true"],
+.stApp [data-testid="stCheckbox"] input:checked,
+.stApp [data-testid="stToggle"] input:checked {
+    background-color: var(--control-accent) !important;
+    border-color: var(--control-accent) !important;
+    accent-color: var(--control-accent) !important;
+}
+.stApp [data-testid="stSlider"] [data-testid="stThumbValue"],
+.stApp [data-testid="stSlider"] [data-testid="stThumbValue"] * {
+    color: var(--control-accent) !important;
+    -webkit-text-fill-color: var(--control-accent) !important;
+}
+.stApp [data-testid="stRadio"] [role="radio"][aria-checked="true"] + div,
+.stApp [data-testid="stRadio"] [role="radio"][aria-checked="true"] + div * {
+    background: transparent !important;
+}
+.stApp [data-baseweb="select"] [aria-selected="true"],
+.stApp [data-baseweb="select"] [role="option"]:hover {
+    background-color: var(--input-background) !important;
+    color: var(--main-text) !important;
+}
