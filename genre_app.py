@@ -168,7 +168,7 @@ if st.session_state["active_page"] == "evil":
     scroll_to_top()
     load_theme("evil")
 
-    st.title("Your evil twin's playlist 😈")
+    st.title("Your other you's playlist 😈")
     st.write(
         "A darker detour built from the opposite of your music preferences."
     )
