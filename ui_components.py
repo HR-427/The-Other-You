@@ -306,7 +306,7 @@ def _combine_playlists(normal_playlist, evil_playlist):
 def _format_combined_copy_text(normal_playlist, evil_playlist):
     # create the alternating combined-playlist clipboard text
 
-    lines = ["YOU VS YOUR EVIL TWIN 😇😈", ""]
+    lines = ["YOU VS YOUR OTHER YOU 😇😈", ""]
     combined_tracks = _combine_playlists(normal_playlist, evil_playlist)
 
     for position, (source, track) in enumerate(combined_tracks, start=1):
@@ -352,7 +352,7 @@ def render_comparison_page(normal_playlist, evil_playlist):
         normal_playlist
     )
     evil_text = _format_playlist_copy_text(
-        "MY EVIL TWIN'S PLAYLIST 😈",
+        "MY OTHER YOU'S PLAYLIST 😈",
         evil_playlist
     )
     combined_text = _format_combined_copy_text(
@@ -388,7 +388,7 @@ def render_comparison_page(normal_playlist, evil_playlist):
         '</section>'
         '<section class="comparison-panel evil-panel">'
         '<div class="comparison-panel-heading"><span>😈</span>'
-        '<div><p>Your opposite</p><h2>Evil twin playlist</h2></div></div>'
+        '<div><p>Your opposite</p><h2>Other You playlist</h2></div></div>'
         '<p class="comparison-caption">A preview of their first ten songs.</p>'
         '<div class="comparison-tracks">'
         f'{_render_preview_tracks(evil_playlist)}'
@@ -400,7 +400,7 @@ def render_comparison_page(normal_playlist, evil_playlist):
         '<section class="combined-choice">'
         '<div><p>Cannot choose a side?</p>'
         '<h3>Combine both worlds</h3>'
-        '<span>The songs will alternate between you and your evil twin.</span>'
+        '<span>The songs will alternate between you and your other you.</span>'
         '</div>'
         '<button class="copy-button combined-copy" '
         'onclick="copyPlaylist(\'combined\', this)">Copy combined playlist</button>'

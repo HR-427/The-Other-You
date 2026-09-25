@@ -173,20 +173,20 @@ if st.session_state["active_page"] == "evil":
         "A darker detour built from the opposite of your music preferences."
     )
 
-    st.subheader("What this says about your evil twin")
+    st.subheader("What this says about your 'other you'")
     evil_features = st.session_state.get("evil_user_features")
 
     if evil_features:
         evil_personality = describe_music_personality(
             evil_features,
-            profile_name="Your evil twin's"
+            profile_name="Your other you"
         )
     else:
-        evil_personality = "Your evil twin's music profile is unavailable."
+        evil_personality = "Your other you's music profile is unavailable."
 
     render_personality_card(evil_personality)
 
-    st.subheader("Your evil twin's top three genres")
+    st.subheader("Your other you's top three genres")
 
     render_genre_cards(
         st.session_state.get("evil_genre_predictions", []),
@@ -195,20 +195,20 @@ if st.session_state["active_page"] == "evil":
     )
 
     add_vertical_space()
-    st.subheader("Your evil twin's recommended tracks")
+    st.subheader("Your other you's recommended tracks")
 
     evil_twin_playlist = st.session_state.get("evil_twin_playlist", [])
 
     if len(evil_twin_playlist) < st.session_state.get("playlist_length", 0):
         st.warning(
             "Last.fm did not return enough unique tracks to fill "
-            "the requested evil twin playlist length."
+            "the requested other you's playlist length."
         )
 
     if evil_twin_playlist:
         render_playlist(evil_twin_playlist)
     else:
-        st.error("No evil twin tracks could be found for this profile.")
+        st.error("No other you tracks could be found for this profile.")
 
     if st.button("Next →"):
         st.session_state["active_page"] = "comparison"
